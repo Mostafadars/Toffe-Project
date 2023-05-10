@@ -7,6 +7,14 @@ public class Item {
     private double discount;
     private int quantity;
 
+    public Item(String name, double price, String brand, String category, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.brand = brand;
+        this.category = category;
+        this.quantity = quantity;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

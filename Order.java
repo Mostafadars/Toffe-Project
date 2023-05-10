@@ -49,7 +49,15 @@ public class Order {
 
     public void previousOrder(){}
 
-    public double calcTotalPrice() {return 0;}
+    public  double calculateTotalPrice(ArrayList<Item> cartItems) {
+        double totalPrice = 0.0;
+
+        for (Item item : cartItems) {
+            totalPrice += item.getPrice();
+        }
+
+        return totalPrice;
+    }
 
     public boolean reOrder(){return true;}
 }
