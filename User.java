@@ -4,54 +4,63 @@ import java.util.Scanner;
 
 
 public class User {
-    private ArrayList<LoggedInUser> userList = new ArrayList<LoggedInUser>();
-    protected String userName;
-    protected String email;
-    protected String password;
-    protected String phone;
-    protected Address address;
 
-    public User(){}
+    public ArrayList<LoggedInUser> userList = new ArrayList<LoggedInUser>();
+    public boolean isLogged = false;
 
-    public User(String userName, String email, String password, String phone, Address address) {
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.address = address;
-    }
+    public void register() {
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Enter username: ");
+        String userName = scanner.nextLine();
 
-    public void register(String username, String email, String password, String phoneNumber, Address address) {
-        // Validate email format
-        if (validateEmail(email)) {
-            System.out.println("Invalid email format. Please provide a valid email.");
+        System.out.print("Enter email: ");
+        String email = scanner.nextLine();
+
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        System.out.print("Enter phone number: ");
+        String phone = scanner.nextLine();
+
+        System.out.print("Enter street: ");
+        String street = scanner.nextLine();
+
+        System.out.print("Enter home number: ");
+        int homeNumber = scanner.nextInt();
+
+        System.out.print("Enter apartment number: ");
+        int apartmentNumber = scanner.nextInt();
+
+        scanner.nextLine(); // Consume the newline character after reading the apartment number
+
+        if (!validateEmail(email)) {
+            System.out.println("Invalid email . Please provide a valid email.");
             return;
         }
 
         // Validate phone number
-        if (validatePhoneNumber(phoneNumber)) {
+        if (!validatePhoneNumber(phone)) {
             System.out.println("Invalid phone number. Please provide a valid phone number.");
             return;
         }
 
-
-        LoggedInUser newUser = new LoggedInUser(username, email, password, phoneNumber, address);
+        Address address = new Address(street, homeNumber, apartmentNumber);
+        LoggedInUser newUser = new LoggedInUser(userName, email, password, phone, address);
 
         userList.add(newUser);
+        isLogged = true;
 
-        System.out.println("Registration successful!");
+        System.out.println("Registration successful!\nYou Are Logged In Now.\n");
     }
 
     private boolean validateEmail(String email) {
-        // Use regular expression pattern to validate email format
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         Pattern pattern = Pattern.compile(emailRegex);
         return pattern.matcher(email).matches();
     }
 
     private boolean validatePhoneNumber(String phone) {
-        // Use regular expression pattern to validate phone number format
         String phoneRegex = "^01[0125]\\d{8}$";
         Pattern pattern = Pattern.compile(phoneRegex);
         return pattern.matcher(phone).matches();
@@ -67,18 +76,11 @@ public class User {
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
 
-        LoggedInUser logged = new LoggedInUser();
-
-        logged.logIn(userName, password);
-
-    }
-
-    public void logIn(String email, String password) {
         for (LoggedInUser user : userList) {
+            
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 System.out.println("Login successful!");
-                // Perform further actions for a logged-in user, such as making an order, adding items to the shopping cart, or paying with cash.
-                // Example: user.makeOrder();
+                isLogged = true;
                 return;
             }
         }
@@ -87,7 +89,7 @@ public class User {
     }
 
 
-    public void viewCatalog() {
-        // Add code to view the catalog here
+    public void viewCatalog(Catalog catalog) {
+        catalog.showGoods();
     }
 }

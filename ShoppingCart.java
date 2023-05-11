@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class ShoppingCart {
     private int cartId;
-    private ArrayList<Item> items = new ArrayList<Item>(null);
+    private ArrayList<Item> items = new ArrayList<Item>();
     private LoggedInUser loggedInUser;
-    private ArrayList<Order> orders = new ArrayList<Order>(null);
+    private ArrayList<Order> orders = new ArrayList<Order>();
 
     public void setCartId(int cartId) {
         this.cartId = cartId;

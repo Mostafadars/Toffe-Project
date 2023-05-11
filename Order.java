@@ -7,6 +7,12 @@ public class Order {
     private String orderHistory;
     private double totalPrice;
 
+    public Order(int id, LoggedInUser buyer, ArrayList<Item> items) {
+        this.id = id;
+        this.buyer = buyer;
+        this.items = items;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

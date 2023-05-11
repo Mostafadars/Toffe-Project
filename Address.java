@@ -9,6 +9,8 @@ public class Address {
         this.apartmentNumber = apartmentNumber;
     }
 
+    public Address(){}
+
     public void setStreet(String street) {
         this.street = street;
     }

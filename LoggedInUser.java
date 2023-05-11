@@ -4,11 +4,20 @@ import java.util.regex.Pattern;
 
 public class LoggedInUser extends User{
 
+    protected String userName;
+    protected String email;
+    protected String password;
+    protected String phone;
+    protected Address address = new Address();
     private ArrayList<Order> orders = new ArrayList<Order>();
-    private ShoppingCart shoppingCart;
+    private ShoppingCart shoppingCart = new ShoppingCart();
 
     public LoggedInUser(String userName, String email, String password, String phone, Address address) {
-        super(userName, email, password, phone, address);
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
     }
 
     public LoggedInUser(){}
@@ -59,7 +68,6 @@ public class LoggedInUser extends User{
     public void choosePayMethod(){}
 
     public void addToShoppingCart(Item item) {
-        shoppingCart = getShoppingCart();
         shoppingCart.addItems(item);
         System.out.println("Item added to the shopping cart.");
     }
@@ -67,12 +75,12 @@ public class LoggedInUser extends User{
 
     public void pay(double amount){
         Payment payment = new Payment();
-        payment.payWithCash(amount);
+        payment.payWithCash(amount, this.address);
         System.out.println("Payment completed. Order will be paid upon delivery.");
     }
 
-    public void makeOrder() {
-        ShoppingCart shoppingCart = getShoppingCart();
+    public void makeOrder(int id) {
+        shoppingCart = getShoppingCart();
         ArrayList<Item> cartItems = shoppingCart.getItems();
 
         if (cartItems.isEmpty()) {
@@ -81,19 +89,12 @@ public class LoggedInUser extends User{
         }
 
         // Create a new order
-        Order newOrder = new Order();
-        newOrder.setBuyer(this);
-        for (Item item : cartItems)
-            newOrder.setItems(item);
+        Order newOrder = new Order(id, this, cartItems);
         newOrder.setTotalPrice(calculateTotalPrice(cartItems));
 
         // Add the order to the user's order list
         ArrayList<Order> userOrders = getOrders();
         userOrders.add(newOrder);
-
-        // Close the shopping cart and create a new one for the user
-        ShoppingCart newShoppingCart = new ShoppingCart();
-        setShoppingCart(newShoppingCart);
 
         // Perform the order payment
         pay(newOrder.getTotalPrice());
