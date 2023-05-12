@@ -3,13 +3,13 @@ public class Address {
     private int homeNumber;
     private int apartmentNumber;
 
+    public Address(){}
+
     public Address(String street, int homeNumber, int apartmentNumber) {
         this.street = street;
         this.homeNumber = homeNumber;
         this.apartmentNumber = apartmentNumber;
     }
-
-    public Address(){}
 
     public void setStreet(String street) {
         this.street = street;

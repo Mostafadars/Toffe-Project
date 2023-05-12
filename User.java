@@ -34,24 +34,25 @@ public class User {
 
         scanner.nextLine(); // Consume the newline character after reading the apartment number
 
+        LoggedInUser newUser = new LoggedInUser();
         if (!validateEmail(email)) {
             System.out.println("Invalid email . Please provide a valid email.");
-            return null;
+            return newUser;
         }
 
         if (!checkEmail(email, userList)) {
             System.out.println("This Email Already Exists.");
-            return null;
+            return newUser;
         }
 
         // Validate phone number
         if (!validatePhoneNumber(phone)) {
             System.out.println("Invalid phone number. Please provide a valid phone number.");
-            return null;
+            return newUser;
         }
 
         Address address = new Address(street, homeNumber, apartmentNumber);
-        LoggedInUser newUser = new LoggedInUser(userName, email, password, phone, address);
+        newUser = new LoggedInUser(userName, email, password, phone, address);
 
         //userList.add(newUser);
         newUser.isLogged = true;
@@ -100,8 +101,9 @@ public class User {
             }
         }
 
+        LoggedInUser user = new LoggedInUser();
         System.out.println("Invalid email or password. Please try again.");
-        return null;
+        return user;
     }
 
 

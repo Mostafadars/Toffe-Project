@@ -52,9 +52,6 @@ public class Catalog {
         }
     }
 
-
-    public boolean removeItem(){return true;}
-
     public void searchByItem(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Item Name: ");
@@ -132,5 +129,6 @@ public class Catalog {
         return;
     }
 
+    public boolean removeItem(){return true;}
 
 }

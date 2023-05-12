@@ -111,7 +111,7 @@ public class ToffeeSystem {
                         break;
                     case 2:
                         loggedUser = loggedUser.register(userList);
-                        if (loggedUser != null)
+                        if (loggedUser.isLogged)
                             userList.add(loggedUser);
                         break;
                     case 3:
