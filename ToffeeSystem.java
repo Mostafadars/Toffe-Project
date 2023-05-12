@@ -7,12 +7,19 @@ public class ToffeeSystem {
 
     public void CatalogItems()
     {
-        Item item1 = new Item("chocolate", 5, "none", "none", 20);
-        Item item2 = new Item("toffee", 10, "none", "none", 20);
-        Item item3 = new Item("candy", 15, "none", "none", 20);
-        Item item4 = new Item("chocolate bar", 20, "none", "none", 20);
-        Item item5 = new Item("cabri", 25, "none", "none", 20);
-        Item item6 = new Item("moro", 30, "none", "none", 20);
+        Item item1 = new Item("Brittle Candy", 5, "Candies", "Candy", 50);
+        Item item2 = new Item("Bon Bon", 10, "Diff", "Toffee", 50);
+        Item item3 = new Item("Caramels", 15, "Diff", "Toffee", 50);
+        Item item4 = new Item("Cotton Candy", 20, "Candies", "Candy", 50);
+        Item item5 = new Item("Chocolate Bubble", 25, "Cabri", "Chocolate", 50);
+        Item item6 = new Item("Moro", 30, "Cabri", "Chocolate", 50);
+        Item item7 = new Item("Chewing Gum", 35, "Diff", "Toffee", 50);
+        Item item8 = new Item("Sours", 40, "Diff", "Toffee", 50);
+        Item item9 = new Item("Lollypop", 45, "Diff", "Toffee", 50);
+        Item item10 = new Item("Candy Cane", 50, "Candies", "Candy", 50);
+        Item item11 = new Item("Hard Candy", 55, "Candies", "Candy", 50);
+        Item item12 = new Item("Gummie", 60, "Diff", "Toffee", 50);
+
 
         catalog.setItems(item1);
         catalog.setItems(item2);
@@ -20,6 +27,12 @@ public class ToffeeSystem {
         catalog.setItems(item4);
         catalog.setItems(item5);
         catalog.setItems(item6);
+        catalog.setItems(item7);
+        catalog.setItems(item8);
+        catalog.setItems(item9);
+        catalog.setItems(item10);
+        catalog.setItems(item11);
+        catalog.setItems(item12);
     }
 
     public void menu() {
@@ -76,7 +89,7 @@ public class ToffeeSystem {
                         loggedUser.register();
                         break;
                     case 3:
-                        loggedUser.logIn();
+                        loggedUser.login();
                         break;
                     case 4:
                         System.out.println("Thank you for using Toffee System!");

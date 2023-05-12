@@ -55,7 +55,7 @@ public class Order {
 
     public void previousOrder(){}
 
-    public  double calculateTotalPrice(ArrayList<Item> cartItems) {
+    public double calculateTotalPrice(ArrayList<Item> cartItems) {
         double totalPrice = 0.0;
 
         for (Item item : cartItems) {

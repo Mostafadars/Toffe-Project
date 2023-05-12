@@ -29,15 +29,17 @@ public class Catalog {
     public void viewCatalog(LoggedInUser loggedUser) {
         if (loggedUser.isLogged) {
             String str = "";
-            showGoods();
-            System.out.println("Do You Want To Add To Shopping Cart? (Y/N)");
             Scanner scanner = new Scanner(System.in);
-            str = scanner.nextLine();  
+            showGoods();
+
+            System.out.println("Do You Want To Add To Shopping Cart? (Y/N)");
+            str = scanner.nextLine();
             if(str.equals("Y") || str.equals("y")) {
                 System.out.println("Enter The Number Of The Item You Want To Add To Shopping Cart");
                 int num = scanner.nextInt();
-                loggedUser.addToShoppingCart(items.get(num-1));
+                loggedUser.addToShoppingCart(items.get(num - 1));
             }
+
             System.out.println("Back To Main Menu? (Y/N)");
             do {
                 str = scanner.nextLine();

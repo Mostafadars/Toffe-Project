@@ -88,9 +88,16 @@ public class LoggedInUser extends User{
             return;
         }
 
+        // Show Items In Orde
+        int num = 1;
+        System.out.println("You Order Has Items : ");
+        for (Item item : cartItems) {
+            System.out.println((num++) + ". " + item.getName());
+        }
+
         // Create a new order
         Order newOrder = new Order(id, this, cartItems);
-        newOrder.setTotalPrice(calculateTotalPrice(cartItems));
+        newOrder.setTotalPrice(newOrder.calculateTotalPrice(cartItems));
 
         // Add the order to the user's order list
         ArrayList<Order> userOrders = getOrders();
@@ -105,11 +112,6 @@ public class LoggedInUser extends User{
         System.out.println("Order placed successfully!");
     }
 
-    private double calculateTotalPrice(ArrayList<Item> cartItems) {
-        return 0;
-    }
-
-
     public void closeOrder(Order order) {
         order.setOrderHistory("Delivered");
         System.out.println("Order closed. Thank you for shopping with us!");
@@ -119,6 +121,6 @@ public class LoggedInUser extends User{
         System.out.println("Name : " + userName);
         System.out.println("Email : " + email);
         System.out.println("Phone : " + phone);
-        System.out.println("Address : Apartment #" + address.getApartmentNumber() + " Home #" + address.getHomeNumber() + " " + address.getStreet() + " Street");
+        System.out.println("Address : Apartment #" + address.getApartmentNumber() + " - Home #" + address.getHomeNumber() + " - " + address.getStreet() + " Street");
     }
 }

@@ -67,7 +67,7 @@ public class User {
     }
 
 
-    public void logIn() {
+    public void login() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter email: ");
@@ -86,6 +86,7 @@ public class User {
         }
 
         System.out.println("Invalid email or password. Please try again.");
+        return;
     }
 
 
