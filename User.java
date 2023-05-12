@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class User {
 
-    public ArrayList<LoggedInUser> userList = new ArrayList<LoggedInUser>();
+    //public ArrayList<LoggedInUser> userList = new ArrayList<LoggedInUser>();
     public boolean isLogged = false;
 
-    public void register() {
+    public LoggedInUser register(ArrayList<LoggedInUser> userList) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter username: ");
@@ -36,28 +36,43 @@ public class User {
 
         if (!validateEmail(email)) {
             System.out.println("Invalid email . Please provide a valid email.");
-            return;
+            return null;
+        }
+
+        if (!checkEmail(email, userList)) {
+            System.out.println("This Email Already Exists.");
+            return null;
         }
 
         // Validate phone number
         if (!validatePhoneNumber(phone)) {
             System.out.println("Invalid phone number. Please provide a valid phone number.");
-            return;
+            return null;
         }
 
         Address address = new Address(street, homeNumber, apartmentNumber);
         LoggedInUser newUser = new LoggedInUser(userName, email, password, phone, address);
 
-        userList.add(newUser);
-        isLogged = true;
+        //userList.add(newUser);
+        newUser.isLogged = true;
 
         System.out.println("Registration successful!\nYou Are Logged In Now.\n");
+        return newUser;
     }
 
     private boolean validateEmail(String email) {
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         Pattern pattern = Pattern.compile(emailRegex);
         return pattern.matcher(email).matches();
+    }
+
+    // make functio checkEmailInUserList to check if the email in the user list or not
+    private boolean checkEmail(String email, ArrayList<LoggedInUser> userList) {
+        for (LoggedInUser user : userList) {
+            if (user.getEmail().equals(email))
+                return false;
+        }
+        return true;
     }
 
     private boolean validatePhoneNumber(String phone) {
@@ -67,7 +82,7 @@ public class User {
     }
 
 
-    public void login() {
+    public LoggedInUser login(ArrayList<LoggedInUser> userList) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter email: ");
@@ -80,13 +95,13 @@ public class User {
             
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 System.out.println("Login successful!");
-                isLogged = true;
-                return;
+                user.isLogged = true;
+                return user;
             }
         }
 
         System.out.println("Invalid email or password. Please try again.");
-        return;
+        return null;
     }
 
 

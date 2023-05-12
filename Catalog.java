@@ -55,16 +55,82 @@ public class Catalog {
 
     public boolean removeItem(){return true;}
 
-    public Item searchByItem(String name){
-        Item item = null;
-        return item;
+    public void searchByItem(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Item Name: ");
+        String name = scanner.nextLine();
+
+        System.out.println(name + " Item :");
+        int num = 1;
+        for (Item item : items) {
+            if (item.getName().equals(name)){
+                System.out.println("Item : " + item.getName() + ", Price : " + item.getPrice());
+                num++;
+            }
+        }
+        if (num == 1) {
+            System.out.println("No Items In This Brand");
+            return;
+        }
+        return;
     }
 
-    public void searchByCategory(String category){}
+    public void searchByCategory(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Category Name: ");
+        String category = scanner.nextLine();
 
-    public void searchByBrand(String brand){}
+        System.out.println(category + " Category :");
+        int num = 1;
+        for (Item item : items) {
+            if (item.getCategory().equals(category)){
+                System.out.println("Item " + (num++) + " : " + item.getName() + ", Price : " + item.getPrice());
+            }
+        }
+        if (num == 1) {
+            System.out.println("No Items In This Category");
+            return;
+        }
+        return;
+    }
 
-    public void itemDetails(){}
+    public void searchByBrand(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Brand Name: ");
+        String brand = scanner.nextLine();
 
-    
+        System.out.println(brand + " Brand :");
+        int num = 1;
+        for (Item item : items) {
+            if (item.getBrand().equals(brand)){
+                System.out.println("Item " + (num++) + " : " + item.getName() + ", Price : " + item.getPrice());
+            }
+        }
+        if (num == 1) {
+            System.out.println("No Items In This Brand");
+            return;
+        }
+        return;
+    }
+
+    public void itemDetails(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Item Name: ");
+        String itemName = scanner.nextLine();
+
+        for (Item item : items) {
+            if (item.getName().equals(itemName)){
+                System.out.println("Name: " + item.getName());
+                System.out.println("Brand: " + item.getBrand());
+                System.out.println("Price: " + item.getPrice());
+                System.out.println("Category: " + item.getCategory());
+                System.out.println("Quantity: " + item.getQuantity());
+                System.out.println("--------------------------------");
+                break;
+            }
+        }
+        return;
+    }
+
+
 }

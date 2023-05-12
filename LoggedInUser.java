@@ -63,7 +63,9 @@ public class LoggedInUser extends User{
         return shoppingCart;
     }
 
-    public boolean verifyLogin(){return true;}
+    public void verifyLogin(){
+
+    }
 
     public void choosePayMethod(){}
 

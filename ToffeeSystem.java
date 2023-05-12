@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ToffeeSystem {
+    public ArrayList<LoggedInUser> userList = new ArrayList<LoggedInUser>();
     private Catalog catalog = new Catalog();
     private LoggedInUser loggedUser = new LoggedInUser();
     private int id = 1;
@@ -19,6 +21,9 @@ public class ToffeeSystem {
         Item item10 = new Item("Candy Cane", 50, "Candies", "Candy", 50);
         Item item11 = new Item("Hard Candy", 55, "Candies", "Candy", 50);
         Item item12 = new Item("Gummie", 60, "Diff", "Toffee", 50);
+        Item item13 = new Item("Nuts Chocolate", 65, "Cabri", "Chocolate", 50);
+        Item item14 = new Item("Caramel Chocolate", 70, "Cabri", "Chocolate", 50);
+        Item item15 = new Item("Oreo Chocolate", 75, "Cabri", "Chocolate", 50);
 
 
         catalog.setItems(item1);
@@ -33,6 +38,9 @@ public class ToffeeSystem {
         catalog.setItems(item10);
         catalog.setItems(item11);
         catalog.setItems(item12);
+        catalog.setItems(item13);
+        catalog.setItems(item14);
+        catalog.setItems(item15);
     }
 
     public void menu() {
@@ -48,7 +56,11 @@ public class ToffeeSystem {
                 System.out.println("1. View Catalog");
                 System.out.println("2. Make Orders");
                 System.out.println("3. Show Customer Details");
-                System.out.println("4. Log out");
+                System.out.println("4. Search Item By Name");
+                System.out.println("5. Search Item By Category");
+                System.out.println("6. Search Item By Brand");
+                System.out.println("7. Show Item Details");
+                System.out.println("8. Log out");
                 System.out.println("Enter your choice: ");
                 choice = scanner.nextInt();
                 scanner.nextLine();
@@ -65,6 +77,18 @@ public class ToffeeSystem {
                         loggedUser.showDetails();
                         break;
                     case 4:
+                        catalog.searchByItem();
+                        break;
+                    case 5:
+                        catalog.searchByCategory();
+                        break;
+                    case 6:
+                        catalog.searchByBrand();
+                        break;
+                    case 7:
+                        catalog.itemDetails();
+                        break;
+                    case 8:
                         loggedUser.logOut();
                         break;
                     default:
@@ -86,10 +110,12 @@ public class ToffeeSystem {
                         catalog.showGoods();
                         break;
                     case 2:
-                        loggedUser.register();
+                        loggedUser = loggedUser.register(userList);
+                        if (loggedUser != null)
+                            userList.add(loggedUser);
                         break;
                     case 3:
-                        loggedUser.login();
+                        loggedUser = loggedUser.login(userList);
                         break;
                     case 4:
                         System.out.println("Thank you for using Toffee System!");
