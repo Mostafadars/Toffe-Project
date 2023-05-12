@@ -114,4 +114,11 @@ public class LoggedInUser extends User{
         order.setOrderHistory("Delivered");
         System.out.println("Order closed. Thank you for shopping with us!");
     }
+
+    public void showDetails() {
+        System.out.println("Name : " + userName);
+        System.out.println("Email : " + email);
+        System.out.println("Phone : " + phone);
+        System.out.println("Address : Apartment #" + address.getApartmentNumber() + " Home #" + address.getHomeNumber() + " " + address.getStreet() + " Street");
+    }
 }

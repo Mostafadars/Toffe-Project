@@ -92,4 +92,20 @@ public class User {
     public void viewCatalog(Catalog catalog) {
         catalog.showGoods();
     }
+
+    // Implement Function LogOut , ask the user to if he want to log out or not , if he want make log out and return to the main menu , if not return to logged in menu again , Suggest another implementation
+    public void logOut() {
+        Scanner scanner = new Scanner(System.in);
+        String str = "";
+        System.out.println("Are You Sure You Want To Log Out? (Y/N)");
+        do {
+            str = scanner.nextLine();
+            if (str.equals("Y") || str.equals("y")) {
+                isLogged = false;
+                return;
+            }
+            else if (str.equals("N") || str.equals("n"))
+                return;
+        } while (true);
+    }
 }

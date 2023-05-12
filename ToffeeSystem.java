@@ -34,6 +34,8 @@ public class ToffeeSystem {
             if(loggedUser.isLogged) {
                 System.out.println("1. View Catalog");
                 System.out.println("2. Make Orders");
+                System.out.println("3. Show Customer Details");
+                System.out.println("4. Log out");
                 System.out.println("Enter your choice: ");
                 choice = scanner.nextInt();
                 scanner.nextLine();
@@ -45,6 +47,12 @@ public class ToffeeSystem {
                         break;
                     case 2:
                         loggedUser.makeOrder(id++);
+                        break;
+                    case 3:
+                        loggedUser.showDetails();
+                        break;
+                    case 4:
+                        loggedUser.logOut();
                         break;
                     default:
                         System.out.println("Invalid choice. Please try again.");

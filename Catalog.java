@@ -16,7 +16,7 @@ public class Catalog {
         int num = 1;
         for (Item item : items) {
             System.out.println(num++);
-            System.out.println(". Name: " + item.getName());
+            System.out.println("Name: " + item.getName());
             System.out.println("Brand: " + item.getBrand());
             System.out.println("Price: " + item.getPrice());
             System.out.println("Category: " + item.getCategory());
