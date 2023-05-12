@@ -53,8 +53,6 @@ public class Order {
         return totalPrice;
     }
 
-    public void previousOrder(){}
-
     public double calculateTotalPrice(ArrayList<Item> cartItems) {
         double totalPrice = 0.0;
 
@@ -65,5 +63,7 @@ public class Order {
         return totalPrice;
     }
 
-    public boolean reOrder(){return true;}
+    public void previousOrder(){}
+
+    public void reOrder(){}
 }
