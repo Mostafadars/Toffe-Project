@@ -12,6 +12,8 @@ public class LoggedInUser extends User{
     private ArrayList<Order> orders = new ArrayList<Order>();
     private ShoppingCart shoppingCart = new ShoppingCart();
 
+    public LoggedInUser(){}
+
     public LoggedInUser(String userName, String email, String password, String phone, Address address) {
         this.userName = userName;
         this.email = email;
@@ -19,9 +21,6 @@ public class LoggedInUser extends User{
         this.phone = phone;
         this.address = address;
     }
-
-    public LoggedInUser(){}
-
 
     public String getUserName() {
         return userName;
@@ -62,12 +61,6 @@ public class LoggedInUser extends User{
     public ShoppingCart getShoppingCart() {
         return shoppingCart;
     }
-
-    public void verifyLogin(){
-
-    }
-
-    public void choosePayMethod(){}
 
     public void addToShoppingCart(Item item) {
         shoppingCart.addItems(item);
@@ -115,7 +108,7 @@ public class LoggedInUser extends User{
     }
 
     public void closeOrder(Order order) {
-        order.setOrderHistory("Delivered");
+        order.setOrderHistory("Order Delivered");
         System.out.println("Order closed. Thank you for shopping with us!");
     }
 
@@ -125,4 +118,6 @@ public class LoggedInUser extends User{
         System.out.println("Phone : " + phone);
         System.out.println("Address : Apartment #" + address.getApartmentNumber() + " - Home #" + address.getHomeNumber() + " - " + address.getStreet() + " Street");
     }
+
+    public void choosePayMethod(){}
 }
