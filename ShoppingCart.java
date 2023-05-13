@@ -10,33 +10,37 @@ public class ShoppingCart {
         this.cartId = cartId;
     }
 
-    public int getCartId() {
-        return cartId;
-    }
 
-    public void addItems(Item item) {
-        this.items.add(item);
-    }
-
-    public ArrayList<Item> getItems() {
-        return items;
+    public void setOrders(Order order) {
+        this.orders.add(order);
     }
 
     public void setLoggedInUser(LoggedInUser loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
-    public LoggedInUser getLoggedInUser() {
-        return loggedInUser;
-    }
 
-    public void setOrders(Order order) {
-        this.orders.add(order);
+    public int getCartId() {
+        return cartId;
     }
 
     public ArrayList<Order> getOrders() {
         return orders;
     }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void addItems(Item item) {
+        this.items.add(item);
+    }
+
+    public LoggedInUser getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    
 
     public void updateQuantity(int quantity){}
 
