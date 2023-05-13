@@ -1,3 +1,6 @@
+// This class is the main class of the system. It contains the main menu of the system.
+// This class manage the user and the catalog of the system.
+
 import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.Scanner;
