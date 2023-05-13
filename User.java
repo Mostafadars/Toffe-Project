@@ -1,3 +1,5 @@
+// User class which contains the methods of the user like login, register, view catalog, logout.
+
 import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -6,7 +8,6 @@ import java.util.Scanner;
 
 public class User {
 
-    //public ArrayList<LoggedInUser> userList = new ArrayList<LoggedInUser>();
     public boolean isLogged = false;
 
     public LoggedInUser register(ArrayList<LoggedInUser> userList) throws MessagingException {
