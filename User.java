@@ -1,3 +1,4 @@
+import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.Scanner;
@@ -8,8 +9,9 @@ public class User {
     //public ArrayList<LoggedInUser> userList = new ArrayList<LoggedInUser>();
     public boolean isLogged = false;
 
-    public LoggedInUser register(ArrayList<LoggedInUser> userList) {
+    public LoggedInUser register(ArrayList<LoggedInUser> userList) throws MessagingException {
         Scanner scanner = new Scanner(System.in);
+        Mail mail = new Mail();
 
         System.out.print("Enter username: ");
         String userName = scanner.nextLine();
@@ -51,14 +53,38 @@ public class User {
             return newUser;
         }
 
-        Address address = new Address(street, homeNumber, apartmentNumber);
-        newUser = new LoggedInUser(userName, email, password, phone, address);
+        if (sendEmail(email)) {
+            System.out.print("Enter Email Verification Code: ");
+            int code = scanner.nextInt();
 
-        //userList.add(newUser);
-        newUser.isLogged = true;
+            if (code == mail.getCode()) {
+                System.out.println("Accepted Code Verification");
 
-        System.out.println("Registration successful!\nYou Are Logged In Now.\n");
+                Address address = new Address(street, homeNumber, apartmentNumber);
+                newUser = new LoggedInUser(userName, email, password, phone, address);
+
+                //userList.add(newUser);
+                newUser.isLogged = true;
+
+                System.out.println("Registration successful!\nYou Are Logged In Now.\n");
+                return newUser;
+            }
+        }
+
+
+
+//        Address address = new Address(street, homeNumber, apartmentNumber);
+//        newUser = new LoggedInUser(userName, email, password, phone, address);
+//
+//        //userList.add(newUser);
+//        newUser.isLogged = true;
+//
+//        System.out.println("Registration successful!\nYou Are Logged In Now.\n");
+//        return newUser;
+
+        System.out.println("Registration Field!\n");
         return newUser;
+
     }
 
     private boolean validateEmail(String email) {
@@ -80,6 +106,11 @@ public class User {
         String phoneRegex = "^01[0125]\\d{8}$";
         Pattern pattern = Pattern.compile(phoneRegex);
         return pattern.matcher(phone).matches();
+    }
+
+    public boolean sendEmail(String email) throws MessagingException {
+        Mail.sendMail(email);
+        return true;
     }
 
 

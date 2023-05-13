@@ -1,3 +1,4 @@
+import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -43,7 +44,7 @@ public class ToffeeSystem {
         catalog.setItems(item15);
     }
 
-    public void menu() {
+    public void menu() throws MessagingException {
         System.out.println("#-------------------------------------------------------------------------#");
         System.out.println("\t\t\tWelcome In Toffee System\t\t\t");
         System.out.println("#-------------------------------------------------------------------------#");
