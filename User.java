@@ -13,6 +13,8 @@ public class User {
         Scanner scanner = new Scanner(System.in);
         Mail mail = new Mail();
 
+        System.out.println("#-------------------------------------------------------------------------#");
+        System.out.println("\t\t\t\t\tSign Up Form\t\t\t\n");
         System.out.print("Enter username: ");
         String userName = scanner.nextLine();
 
@@ -67,22 +69,13 @@ public class User {
                 newUser.isLogged = true;
 
                 System.out.println("Registration successful!\nYou Are Logged In Now.\n");
+                System.out.println("#-------------------------------------------------------------------------#");
                 return newUser;
             }
         }
 
-
-
-//        Address address = new Address(street, homeNumber, apartmentNumber);
-//        newUser = new LoggedInUser(userName, email, password, phone, address);
-//
-//        //userList.add(newUser);
-//        newUser.isLogged = true;
-//
-//        System.out.println("Registration successful!\nYou Are Logged In Now.\n");
-//        return newUser;
-
         System.out.println("Registration Field!\n");
+        System.out.println("#-------------------------------------------------------------------------#");
         return newUser;
 
     }
@@ -93,7 +86,6 @@ public class User {
         return pattern.matcher(email).matches();
     }
 
-    // make functio checkEmailInUserList to check if the email in the user list or not
     private boolean checkEmail(String email, ArrayList<LoggedInUser> userList) {
         for (LoggedInUser user : userList) {
             if (user.getEmail().equals(email))
@@ -117,6 +109,9 @@ public class User {
     public LoggedInUser login(ArrayList<LoggedInUser> userList) {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("#-------------------------------------------------------------------------#");
+        System.out.println("\t\t\t\t\tLogin\t\t\t\n");
+
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
 
@@ -127,6 +122,7 @@ public class User {
             
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 System.out.println("Login successful!");
+                System.out.println("#-------------------------------------------------------------------------#");
                 user.isLogged = true;
                 return user;
             }
@@ -134,18 +130,18 @@ public class User {
 
         LoggedInUser user = new LoggedInUser();
         System.out.println("Invalid email or password. Please try again.");
+        System.out.println("#-------------------------------------------------------------------------#");
         return user;
     }
-
 
     public void viewCatalog(Catalog catalog) {
         catalog.showGoods();
     }
 
-    // Implement Function LogOut , ask the user to if he want to log out or not , if he want make log out and return to the main menu , if not return to logged in menu again , Suggest another implementation
     public void logOut() {
         Scanner scanner = new Scanner(System.in);
         String str = "";
+        System.out.println("#-------------------------------------------------------------------------#");
         System.out.println("Are You Sure You Want To Log Out? (Y/N)");
         do {
             str = scanner.nextLine();

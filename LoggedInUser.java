@@ -64,14 +64,14 @@ public class LoggedInUser extends User{
 
     public void addToShoppingCart(Item item) {
         shoppingCart.addItems(item);
-        System.out.println("Item added to the shopping cart.");
+        System.out.println("Item Added To The Shopping Cart.");
     }
 
 
     public void pay(double amount){
         Payment payment = new Payment();
         payment.payWithCash(amount, this.address);
-        System.out.println("Payment completed. Order will be paid upon delivery.");
+        System.out.println("Payment Completed. Order Will Be Paid Upon Delivery.");
     }
 
     public void makeOrder(int id) {
@@ -79,7 +79,7 @@ public class LoggedInUser extends User{
         ArrayList<Item> cartItems = shoppingCart.getItems();
 
         if (cartItems.isEmpty()) {
-            System.out.println("Your shopping cart is empty. Add items before making an order.");
+            System.out.println("Your Shopping Cart Is Empty. Add Items Before Making An Order.");
             return;
         }
 
@@ -104,12 +104,13 @@ public class LoggedInUser extends User{
         // Close the order
         closeOrder(newOrder);
 
-        System.out.println("Order placed successfully!");
+        System.out.println("Order Placed Successfully!");
     }
 
     public void closeOrder(Order order) {
         order.setOrderHistory("Order Delivered");
-        System.out.println("Order closed. Thank you for shopping with us!");
+        System.out.println("Order Closed. Thank You For Shopping With Us!");
+        System.out.println("Signature : Toffee Shop");
     }
 
     public void showDetails() {

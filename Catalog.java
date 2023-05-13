@@ -16,12 +16,13 @@ public class Catalog {
         int num = 1;
         for (Item item : items) {
             System.out.println(num++);
+            System.out.println("---------------------------------------------------------------------------");
             System.out.println("Name: " + item.getName());
             System.out.println("Brand: " + item.getBrand());
             System.out.println("Price: " + item.getPrice());
             System.out.println("Category: " + item.getCategory());
             System.out.println("Quantity: " + item.getQuantity());
-            System.out.println("--------------------------------");
+            System.out.println("---------------------------------------------------------------------------");
         }
     }
 
@@ -122,7 +123,7 @@ public class Catalog {
                 System.out.println("Price: " + item.getPrice());
                 System.out.println("Category: " + item.getCategory());
                 System.out.println("Quantity: " + item.getQuantity());
-                System.out.println("--------------------------------");
+                System.out.println("---------------------------------------------------------------------------");
                 break;
             }
         }

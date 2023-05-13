@@ -44,6 +44,13 @@ public class ToffeeSystem {
         catalog.setItems(item15);
     }
 
+    public void contactWithUS() {
+        System.out.println("#-------------------------------------------------------------------------#");
+        System.out.println("You Can Contact With Us ON This Number : 01234567890");
+        System.out.println("And We Will Solve Your Problem As Fast As We Can.\nThanks.");
+        System.out.println("#-------------------------------------------------------------------------#");
+    }
+
     public void menu() throws MessagingException {
         System.out.println("#-------------------------------------------------------------------------#");
         System.out.println("\t\t\tWelcome In Toffee System\t\t\t");
@@ -54,6 +61,7 @@ public class ToffeeSystem {
         do {
             int choice;
             if(loggedUser.isLogged) {
+                System.out.println("#-------------------------------------------------------------------------#");
                 System.out.println("1. View Catalog");
                 System.out.println("2. Make Orders");
                 System.out.println("3. Show Customer Details");
@@ -61,7 +69,9 @@ public class ToffeeSystem {
                 System.out.println("5. Search Item By Category");
                 System.out.println("6. Search Item By Brand");
                 System.out.println("7. Show Item Details");
+                System.out.println("7. Show Item Details");
                 System.out.println("8. Log out");
+                System.out.println("#-------------------------------------------------------------------------#");
                 System.out.println("Enter your choice: ");
                 choice = scanner.nextInt();
                 scanner.nextLine();
@@ -97,10 +107,13 @@ public class ToffeeSystem {
                 }
             }
             else {
+                System.out.println("#-------------------------------------------------------------------------#");
                 System.out.println("1. View Catalog");
                 System.out.println("2. Register");
                 System.out.println("3. Login");
-                System.out.println("4. Exit");
+                System.out.println("4. Contact US");
+                System.out.println("5. Exit");
+                System.out.println("#-------------------------------------------------------------------------#");
                 System.out.print("Enter your choice: ");
                 choice = scanner.nextInt();
                 scanner.nextLine(); // Consume the newline character after reading the choice
@@ -119,6 +132,9 @@ public class ToffeeSystem {
                         loggedUser = loggedUser.login(userList);
                         break;
                     case 4:
+                        contactWithUS();
+                        break;
+                    case 5:
                         System.out.println("Thank you for using Toffee System!");
                         System.exit(0);
                         break;
